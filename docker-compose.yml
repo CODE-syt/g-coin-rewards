@@ -1,0 +1,19 @@
+# Local development database only:   docker compose up -d mongo
+# Full stack (app + db):             docker compose --profile app up --build
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports: ["127.0.0.1:27017:27017"]   # bound to localhost only
+    volumes: [mongo-data:/data/db]
+  app:
+    profiles: ["app"]
+    build: .
+    depends_on: [mongo]
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/gcoin
+      NODE_ENV: ${NODE_ENV:-development}
+    ports: ["3000:3000"]
+volumes:
+  mongo-data:

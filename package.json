@@ -1,0 +1,42 @@
+{
+  "name": "g-coin-rewards",
+  "version": "1.0.0",
+  "description": "G Coin Rewards - earn and redeem reward points (Express + MongoDB + vanilla JS)",
+  "main": "src/server.js",
+  "private": true,
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node scripts/seed.js",
+    "create-admin": "node scripts/create-admin.js",
+    "test": "jest --runInBand --forceExit",
+    "gen-secrets": "node scripts/gen-secrets.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 60000,
+    "setupFiles": [
+      "<rootDir>/tests/env.js"
+    ]
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3",
+    "express-rate-limit": "^7.5.1",
+    "express-session": "^1.19.0",
+    "google-auth-library": "^10.9.1",
+    "helmet": "^8.3.0",
+    "mongoose": "^8.24.8",
+    "qrcode": "^1.5.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.3.2"
+  }
+}
